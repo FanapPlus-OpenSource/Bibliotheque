@@ -12,10 +12,3 @@ insert into user (name, email)
 VALUES ('Hessam', 'hessam@test.com');
 insert into user (name, email)
 VALUES ('John', 'john@test.com');
-
-insert into user_book (book_id, user_id)
-values (1, 1);
-insert into user_book (book_id, user_id)
-values (3, 2);
-insert into user_book (book_id, user_id)
-values (4, 2);

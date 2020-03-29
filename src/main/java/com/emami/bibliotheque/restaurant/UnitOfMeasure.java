@@ -1,17 +1,17 @@
-package com.emami.bibliotheque.entity;
+package com.emami.bibliotheque.restaurant;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import java.io.Serializable;
 
-@MappedSuperclass
-public class BaseEntity implements Serializable {
-
+@Entity
+public class UnitOfMeasure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String uom;
 
     public Long getId() {
         return id;
@@ -19,5 +19,13 @@ public class BaseEntity implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUom() {
+        return uom;
+    }
+
+    public void setUom(String uom) {
+        this.uom = uom;
     }
 }
