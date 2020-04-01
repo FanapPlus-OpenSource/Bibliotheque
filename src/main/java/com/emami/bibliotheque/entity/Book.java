@@ -8,9 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.Instant;
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +22,13 @@ public class Book extends BaseEntity {
     @NotBlank
     @Size(min = 2, max = 240)
     private String title;
+    @NotNull
+    @NotBlank
+    @Size(min = 2, max = 240)
     private String author;
+    @NotNull
+    @Min(100000000L)
+    @Max(value = 9999999999999L)
     private Long isbn;
     private Date created_at = Date.from(Instant.now());
 
@@ -36,7 +40,10 @@ public class Book extends BaseEntity {
         userBook.setBook(this);
     }
 
-    public Book(@NotNull String title, String author, Long isbn) {
+
+    public Book(@NotNull @NotBlank @Size(min = 2, max = 240) String title,
+                @NotNull @NotBlank @Size(min = 2, max = 240) String author,
+                @NotNull @Min(100000000L) @Max(value = 9999999999999L) Long isbn) {
         setTitle(title);
         setAuthor(author);
         setIsbn(isbn);
