@@ -26,7 +26,7 @@ public class InMemoryDatabaseLoader {
 //            List<Book> books = bookRepository.findAll();
 //            //I pick a book
 //            Book pickedBook = books.get(1);
-            Book book = new Book(null, "", 123);
+            Book book = new Book(null, "", 123L);
             bookRepository.save(book);
 //            hessam.addBook(pickedBook);
 

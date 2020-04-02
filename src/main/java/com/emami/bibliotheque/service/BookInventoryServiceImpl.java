@@ -4,10 +4,11 @@ import com.emami.bibliotheque.entity.Book;
 import com.emami.bibliotheque.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
+//TODO Write tests
 @Service
 public class BookInventoryServiceImpl implements BookInventoryService {
 
@@ -40,12 +41,12 @@ public class BookInventoryServiceImpl implements BookInventoryService {
     }
 
     @Override
-    public Set<Book> findBooksByAuthor(String author) {
-        return bookRepository.findBooksByAuthor(author).orElseGet(HashSet::new);
+    public List<Book> findBooksByAuthor(String author) {
+        return bookRepository.findBooksByAuthor(author).orElseGet(ArrayList::new);
     }
 
     @Override
-    public Set<Book> findBookByTitle(String title) {
-        return bookRepository.findBooksByTitle(title).orElseGet(HashSet::new);
+    public List<Book> findBookByTitle(String title) {
+        return bookRepository.findBooksByTitleLike(title).orElseGet(ArrayList::new);
     }
 }

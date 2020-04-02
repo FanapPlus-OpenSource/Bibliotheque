@@ -1,13 +1,13 @@
 insert into book (author, isbn, title)
-VALUES ('Charles Dickens', 111103213, 'The Dame');
+VALUES ('Charles Dickens', 12312312311, 'The Dame');
 insert into book (author, isbn, title)
-VALUES ('Dan Brown', 312444123, 'Angels and Demons');
+VALUES ('Dan Brown', 12312312312, 'Angels and Demons');
 insert into book (author, isbn, title)
-VALUES ('Dan Brown', 123456987, 'Davinci code');
+VALUES ('Dan Brown', 12312312313, 'Davinci code');
 insert into book (author, isbn, title)
-VALUES ('Alexander Dumas', 55465487, 'Count of monte christo');
+VALUES ('Alexander Dumas', 12312312314, 'Count of monte christo');
 insert into book (author, isbn, title)
-VALUES ('Jules Vernes', 321546878, 'Natilus');
+VALUES ('Jules Vernes', 12312312315, 'Natilus');
 insert into user (name, email)
 VALUES ('Hessam', 'hessam@test.com');
 insert into user (name, email)
