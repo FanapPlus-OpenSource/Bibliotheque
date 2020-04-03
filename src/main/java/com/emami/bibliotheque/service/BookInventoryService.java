@@ -1,19 +1,19 @@
 package com.emami.bibliotheque.service;
 
-import com.emami.bibliotheque.entity.Book;
+import com.emami.bibliotheque.api.v1.model.BookDTO;
 
 import java.util.List;
 public interface BookInventoryService {
-    Book addBook(Book book);
+    BookDTO addBook(BookDTO book);
 
-    Book findBookById(Long id);
+    BookDTO findBookById(Long id);
 
-    List<Book> findBooksByAuthor(String author);
+    List<BookDTO> findBooksByAuthor(String author);
 
-    List<Book> findBookByTitle(String title);
+    List<BookDTO> findBookByTitle(String title);
 
-    Book updateBook(Book book);
+    BookDTO updateBook(BookDTO book);
 
-    public Long deleteBookById(Long id);
+    Long deleteBookById(Long id);
 
 }

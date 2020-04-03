@@ -1,6 +1,7 @@
 package com.emami.bibliotheque.service;
 
-import com.emami.bibliotheque.entity.Book;
+import com.emami.bibliotheque.api.v1.mapper.BookMapper;
+import com.emami.bibliotheque.api.v1.model.BookDTO;
 import com.emami.bibliotheque.repositories.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,12 +15,14 @@ class BookInventoryServiceImplTest {
 
     @Mock
     BookRepository bookRepository;
+    @Mock
+    BookMapper bookMapper;
     BookInventoryService bookService;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        bookService = new BookInventoryServiceImpl(bookRepository);
+        bookService = new BookInventoryServiceImpl(bookRepository, bookMapper);
     }
 
     @Test
@@ -31,6 +34,6 @@ class BookInventoryServiceImplTest {
     @Test
     void should_throw_exception_with_wrong_book_id_to_update() {
         Mockito.when(bookRepository.findById(Mockito.anyLong())).thenReturn(null);
-        assertThrows(RuntimeException.class, () -> bookService.updateBook(new Book("hello", "hello", 123123123123L)));
+        assertThrows(RuntimeException.class, () -> bookService.updateBook(new BookDTO(null, "hello", "hello", 123123123123L, null)));
     }
 }
