@@ -18,20 +18,28 @@ public class BookInventoryServiceImpl implements BookInventoryService {
     private BookRepository bookRepository;
     private BookMapper bookMapper;
 
-    public BookInventoryServiceImpl(BookRepository bookRepository, BookMapper bookMapper) {
+    public BookInventoryServiceImpl(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
-        this.bookMapper = bookMapper;
+        this.bookMapper = BookMapper.INSTANCE;
     }
 
     @Override
     public BookDTO addBook(BookDTO book) {
-
+        Optional<Book> bookByIsbn = bookRepository.findBookByIsbn(book.getIsbn());
+        if (bookByIsbn.isPresent()) {
+            throw new RuntimeException("Book with this isbn like this already exists");
+        }
         return bookMapper.bookToBookDTO(bookRepository.save(bookMapper.bookDtoToBook(book)));
     }
 
     @Override
     public BookDTO findBookById(Long id) {
         return bookMapper.bookToBookDTO(bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book doesn't exist")));
+    }
+
+    @Override
+    public List<BookDTO> findAllBooks() {
+        return bookRepository.findAll().stream().map(bookMapper::bookToBookDTO).collect(Collectors.toList());
     }
 
     @Override

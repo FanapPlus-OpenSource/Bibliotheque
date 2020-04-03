@@ -15,14 +15,13 @@ class BookInventoryServiceImplTest {
 
     @Mock
     BookRepository bookRepository;
-    @Mock
-    BookMapper bookMapper;
+    BookMapper bookMapper = BookMapper.INSTANCE;
     BookInventoryService bookService;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        bookService = new BookInventoryServiceImpl(bookRepository, bookMapper);
+        bookService = new BookInventoryServiceImpl(bookRepository);
     }
 
     @Test

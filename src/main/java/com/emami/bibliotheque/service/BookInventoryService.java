@@ -8,6 +8,8 @@ public interface BookInventoryService {
 
     BookDTO findBookById(Long id);
 
+    List<BookDTO> findAllBooks();
+
     List<BookDTO> findBooksByAuthor(String author);
 
     List<BookDTO> findBookByTitle(String title);
